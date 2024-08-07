@@ -29,7 +29,7 @@ int main()
 		int flag = write(fd4 , buf , numRead);
 		if(flag == -1)
 		{
-		  printf("Nothing updated");
+		  printf("Nothing updated \n");
 		}
                 close(fd1);
                 close(fd2);
