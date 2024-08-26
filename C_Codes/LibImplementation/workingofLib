@@ -1,0 +1,16 @@
+step 1 - create main program file 
+
+step 2 - create example.h file which include declaration of all the function provided by your library 
+
+step 3 - create example.c files where implementation is done
+
+step 4 - compile the most preferabbly by example.o file name
+
+step 5 - use  "$include "example.h" " in as header file in main file
+
+step 6 - to manage multiple files , we archive them in single file using "ar rcs myLibArchiveFile.a example(output file i.e example.o) "
+
+step 7 - compile main program file by telling to compile linker file too , linker file is archived file i.e.  myLibArchiveFile.a , so the command is 
+ "gcc -o mainfileOutputFilename mainfilename.c -L. myLibArchiveFile.a"
+
+step 8 - './mainfileOutputFilename.o' to execute the output.
