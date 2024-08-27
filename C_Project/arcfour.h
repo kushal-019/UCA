@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -7,14 +8,17 @@
 
 #define rc4Decrypt(x , y) rc4Encrypt(x, y);
 
-struct s_arcfour{
-    int x;
-};
-typedef struct s_arcfour ArcFour; 
 typedef unsigned char int8;
 typedef unsigned short int int16;
 typedef unsigned int int32;
 
-ArcFour *rc4inti(int8 * , int16 );
+struct s_arcfour{
+    int16 i ,j ,k;
+    int8 s[256];
+};
+
+typedef struct s_arcfour ArcFour; 
+
+ArcFour *rc4init(int8 * , int16 );
 int8 rc4byte(void);
 int8 *rc4Encrypt(int8* , int16);

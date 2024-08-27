@@ -22,9 +22,9 @@ void printbin(int8* input  , const int16 size){
 
 int main(){
     char * key , * from ;
-    //  *encrypted , * decrypted ;
+    // *encrypted , * decrypted ;
     
-    // ArcFour *rc4;
+    ArcFour *rc4;
     int16 sKey , sText;
     sKey =sText =0;
     key = "tomatoes";
@@ -35,12 +35,12 @@ int main(){
     sText = strlen(from);
 
     printf("initializing encryption");F;
-    // rc4 = rc4init(key , sKey);
+    rc4 = rc4init((int8*)key , sKey);
     printf("done \n");
 
     printf("'%s' \n -> ",from);
     // encrypted = rc4Encrypt(from ,sText) ;
-    printbin((int8 *)key , sKey);
+    printbin((int8 *)rc4->s , sKey);
     return 0;
 
 
