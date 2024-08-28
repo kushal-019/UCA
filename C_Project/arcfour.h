@@ -6,7 +6,12 @@
 #include <assert.h>
 #include <errno.h>
 
-#define rc4Decrypt(x , y) rc4Encrypt(x, y);
+#define MS 500
+#define export __attribute__((visibility("default")))
+#define rc4Decrypt(x , y ,z) rc4Encrypt(x, y,z)
+#define rc4uninit(x) free(x)
+#define rc4WhiteWash(x,y)  for(x=0;x<(MS*1000000);x++)\
+                                (volatile int8)rc4byte(y);
 
 typedef unsigned char int8;
 typedef unsigned short int int16;
@@ -19,6 +24,6 @@ struct s_arcfour{
 
 typedef struct s_arcfour ArcFour; 
 
-ArcFour *rc4init(int8 * , int16 );
-int8 rc4byte(void);
-int8 *rc4Encrypt(int8* , int16);
+export ArcFour *rc4init(int8 * , int16 );
+int8 rc4byte(ArcFour*);
+export int8 *rc4Encrypt(ArcFour* , int8* , int16);
