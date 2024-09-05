@@ -1,0 +1,1 @@
+This file provides input text for the code which is converted into encoded format and that can be used to encode this string back
